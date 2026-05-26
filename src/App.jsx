@@ -1,15 +1,20 @@
-import { Fragment } from "react";
 import "./App.css";
+import Hero from "./components/Hero/Hero";
+import NavBar from "./components/NavBar/NavBar";
 
 function App() {
-  return(
-
-
-  <Fragment> 
-
-</Fragment>
-
-
-)}
+  return (
+    <div
+      className="
+        container
+        mx-auto
+        sora-font
+      "
+    >
+      <NavBar />
+      <Hero />
+    </div>
+  );
+}
 
 export default App;
