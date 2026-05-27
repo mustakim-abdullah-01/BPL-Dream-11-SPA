@@ -5,6 +5,7 @@ import NavBar from "./components/NavBar/NavBar";
 import PlayerButtonGroup from "./components/PlayerButtonGroup/PlayerButtonGroup";
 import PlayerCards from "./components/PlayerCards/PlayerCards";
 import Footer from "./components/Footer/Footer";
+import NavMenu from "./components/NavBar/NavMenu";
 
 const fetchPlayers = async () => {
   const response = await fetch("/playersData.json");
@@ -14,13 +15,23 @@ const fetchPlayers = async () => {
 const playersPromise = fetchPlayers();
 
 function App() {
+
+
   return (
-    <div
-      className="
-        sora-font
-      "
-    >
+    <div className="sora-font">
+
+
+<div className="max-md:hidden">
       <NavBar />
+</div>
+
+<div className="md:hidden">
+<NavMenu />
+</div>
+
+
+
+
       <div className="max-w-11/12
         mx-auto">
         <Hero />
@@ -36,6 +47,8 @@ function App() {
           <PlayerCards playersPromise={playersPromise} />
         </Suspense>
       </div>
+
+
 
       <Footer />
     </div>

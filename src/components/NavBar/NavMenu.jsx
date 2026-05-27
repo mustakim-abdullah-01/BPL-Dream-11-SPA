@@ -1,14 +1,19 @@
-import { Fragment} from "react";
-import dollar_1 from "../../assets/dollar_1.png"
-import logo from "../../assets/logo.png"
+import { Fragment, useState } from "react";
+import dollar_1 from "../../assets/dollar_1.png";
+import logo from "../../assets/logo.png";
+import { Menu, X } from "lucide-react";
+
+const NavMenu = () => {
 
 
-const NavBar = () => {
+
+const [show, setShow] = useState(false)
+
+
+
 
   return (
     <Fragment>
-      
-      {/* large parent-div*/}
       <div
         className="
           flex justify-between
@@ -39,12 +44,9 @@ const NavBar = () => {
 
           <div>
             <ul
-              className="
-                flex
-                text-[#131313]/70
-                gap-12
-              "
+              className={`font-semibold flex flex-col absolute left-3 ${show ? "top-28" : "-top-150"} text-[#131313] gap-12 z-10 bg-white/60 p-4 duration-1000 rounded-2xl`}
             >
+              <X onClick={()=>{setShow(!show)}} className="hover:cursor-pointer" />
               <li>
                 <a href="">Home</a>
               </li>
@@ -77,19 +79,17 @@ const NavBar = () => {
               Coins
             </span>
             <img src={dollar_1} alt="" />
-
-            {/* <svg
-              xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffea00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-              class="
-                lucide lucide-circle-dollar-sign-icon lucide-circle-dollar-sign
-              "
-            ><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 18V6"/>
-            </svg> */}
           </div>
         </div>
       </div>
+
+<div className={`absolute top-8 left-25 ${show ? "hidden" : "" } duration-1000`} >
+      <Menu onClick={()=>{setShow(!show)}} />
+</div>
+
+      
     </Fragment>
   );
 };
 
-export default NavBar;
+export default NavMenu;

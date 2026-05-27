@@ -13,7 +13,7 @@ const PlayerButtonGroup = () => {
     <Fragment>
       <div
         className="
-          flex justify-between items-center
+          flex flex-wrap gap-4 justify-center md:justify-between items-center
           mb-8
         "
       >
