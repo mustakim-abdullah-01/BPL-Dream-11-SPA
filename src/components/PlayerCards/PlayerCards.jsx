@@ -7,7 +7,7 @@ const playersData = use(playersPromise)
 
 return (
   <Fragment>
-    <div className="grid grid-cols-3 gap-6 w-full">
+    <div className="grid grid-cols-1 items-center md:grid-cols-3 gap-6 w-full mb-50">
       {playersData.map((playerInfo) => (
         <PlayerCard key={playerInfo.rating} playerInfo={playerInfo} />
       ))}

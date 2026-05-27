@@ -16,7 +16,7 @@ const playerCard = ({playerInfo}) => {
 
   return (
     <Fragment>
-      <div className="max-w-106 p-6 pl-12 rounded-2xl border-[#131313]/10 border-1  shadow-md">
+      <div className="max-w-106 p-6 pl-12 rounded-2xl border-[#131313]/10 border  shadow-md">
         <div className="flex justify-center mb-6 w-full">
           <img className="rounded-2xl h-46" src={playerInfo.image} />
         </div>
