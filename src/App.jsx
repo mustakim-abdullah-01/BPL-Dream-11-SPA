@@ -15,28 +15,30 @@ const fetchPlayers = async () => {
 const playersPromise = fetchPlayers();
 
 function App() {
-
-
   return (
-    <div className="sora-font">
+    <div className="sora-font  mx-auto">
+      {/* NavBar */}
+      <div className="max-md:hidden">
+        <NavBar />
+      </div>
 
+      {/* NavMenu */}
+      <div className="md:hidden">
+        <NavMenu />
+      </div>
 
-<div className="max-md:hidden">
-      <NavBar />
-</div>
-
-<div className="md:hidden">
-<NavMenu />
-</div>
-
-
-
-
-      <div className="max-w-11/12
-        mx-auto">
+      {/* Banner */}
+      <div className="px-4">
         <Hero />
-        <PlayerButtonGroup />
+      </div>
 
+      {/* PlayerButtons */}
+      <div className="px-4">
+      <PlayerButtonGroup />
+      </div>
+
+      {/* PlayerCards */}
+      <div className="px-4">
         <Suspense
           fallback={
             <div className="flex justify-center items-center">
@@ -47,9 +49,7 @@ function App() {
           <PlayerCards playersPromise={playersPromise} />
         </Suspense>
       </div>
-
-
-
+      {/* Footer */}
       <Footer />
     </div>
   );
