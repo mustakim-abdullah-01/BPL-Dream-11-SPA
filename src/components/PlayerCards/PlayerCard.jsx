@@ -1,4 +1,5 @@
 import { Fragment, useState } from "react";
+import { Slide, toast } from "react-toastify";
 
 
 const PlayerCard = ({
@@ -86,10 +87,20 @@ const PlayerCard = ({
           <button
             onClick={() => {
               if (balance - playerInfo.price < 0) {
-                return alert("Unpossible transaction");
+                return toast("Unpossible transaction");
               } else {
                 setSelect(true);
-                alert(`${playerInfo.name} ijh selected`);
+                toast.info(`${playerInfo.name} is selected`, {
+                  position: "bottom-center",
+                  autoClose: 2000,
+                  hideProgressBar: false,
+                  closeOnClick: false,
+                  pauseOnHover: true,
+                  draggable: true,
+                  progress: undefined,
+                  theme: "light",
+                  transition: Slide,
+                });
                 setBalance(balance - playerInfo.price);
                 setSelectedPlayers([...selectedPlayers, playerInfo]);
 

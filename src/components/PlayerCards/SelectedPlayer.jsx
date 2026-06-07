@@ -5,42 +5,57 @@ const SelectedPlayer = ({
   playerInfo,
   selectedPlayers,
   setSelectedPlayers,
+  balance,
+  setBalance
 }) => {
+
+
   const handleDelete = () => {
     const filterdPlayers = selectedPlayers.filter(
-      (player) => player.name !== playerInfo.name,
-    );
-
-    setSelectedPlayers(filterdPlayers);
-  };
+      (player) => player.name !== playerInfo.name
+    )
+    setSelectedPlayers(filterdPlayers)
+    setBalance(balance + playerInfo.price)
+  }
 
   return (
     <Fragment>
-      <div className="flex justify-between border border-black/30 shadow-md mb-6 rounded-2xl p-4 items-center">
-        <div>
-          <div className="flex items-center space-x-6">
-            <img
-              className="h-20 rounded-2xl"
-              src={playerInfo.image}
-              alt={playerInfo.name}
-            />
-            <div className="space-y-3">
-              <h3 className="font-semibold text-2xl">{playerInfo.name}</h3>
-              <p className="tex-[16px] text-black/70">
-                {playerInfo.batting_style}
-              </p>
+
+
+
+
+if (!selectedPlayers || selectedPlayers.length === 0) {
+      <div className="flex flex-col items-center justify-center p-10 border-2 border-dashed border-gray-300 rounded-2xl text-center">
+        <h3 className="text-xl font-semibold mb-2">No players selected yet!</h3>
+        <p className="text-gray-500">Go back and add some players to your squad.</p>
+      </div>
+  }
+      
+        <div className="flex justify-between border border-black/30 shadow-md mb-6 rounded-2xl p-4 items-center">
+          <div>
+            <div className="flex items-center space-x-6">
+              <img
+                className="h-20 rounded-2xl"
+                src={playerInfo.image}
+                alt={playerInfo.name}
+              />
+              <div className="space-y-3">
+                <h3 className="font-semibold text-2xl">{playerInfo.name}</h3>
+                <p className="tex-[16px] text-black/70">
+                  {playerInfo.batting_style}
+                </p>
+              </div>
             </div>
           </div>
+          <div>
+            <button
+              className="btn rounded-2xl btn-ghost btn-error btn-lg h-16"
+              onClick={handleDelete}
+            >
+              <Trash />
+            </button>
+          </div>
         </div>
-        <div>
-          <button
-            className="btn rounded-2xl btn-ghost btn-error btn-lg h-16"
-            onClick={handleDelete}
-          >
-            <Trash />
-          </button>
-        </div>
-      </div>
     </Fragment>
   );
 };

@@ -88,6 +88,8 @@ const PlayerButtonGroup = ({ balance, setBalance }) => {
         >
           <div className="mb-72">
             <SelectedPlayers
+              balance={balance}
+              setBalance={setBalance}
               setSelectedPlayers={setSelectedPlayers}
               selectedPlayers={selectedPlayers}
             />

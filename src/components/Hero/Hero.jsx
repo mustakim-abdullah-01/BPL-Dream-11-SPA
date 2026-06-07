@@ -2,7 +2,7 @@ import { Fragment } from "react";
 import bannerImage from "../../assets/banner-main.png"
 import bannerShadowbottom from "../../assets/grad-bottom.png"
 import bannerShadowtop from "../../assets/grad-top.png"
-const Hero = () => {
+const Hero = ({balance, setBalance}) => {
   return (
     <Fragment>
       <div
@@ -76,7 +76,9 @@ const Hero = () => {
                 bg-[#E7FE29]
                 rounded-2xl
                 hover:cursor-pointer
-              ">
+              "
+              onClick={()=> setBalance(balance + 5000)}
+              >
             Claim Free Credit
           </button>
         </div>
