@@ -1,22 +1,18 @@
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 
 
-// {
-//   name: 'Glenn Maxwell', 
-//   nationality: 'Australia', 
-//   batting_style: 'Right-handed', 
-//   bowling_style: 'Right-arm off-break',
-//    rating: 86
-//   }
-
-
-
-const playerCard = ({playerInfo}) => {
-
+const PlayerCard = ({
+  playerInfo,
+  balance,
+  setBalance,
+  selectedPlayers,
+  setSelectedPlayers,
+}) => {
+  const [select, setSelect] = useState(false);
 
   return (
     <Fragment>
-      <div className="max-w-106 p-6 lg:pl-6 rounded-2xl border-[#131313]/10 border  shadow-md">
+      <div className="max-w-106 p-6 lg:pl-6 bg-white rounded-2xl border-[#131313]/10 border  shadow-md">
         <div className="flex justify-center mb-6 w-full">
           <img className="rounded-2xl h-46" src={playerInfo.image} />
         </div>
@@ -30,10 +26,10 @@ const playerCard = ({playerInfo}) => {
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
-              stroke-width="2.25"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="lucide lucide-circle-user-icon lucide-circle-user"
+              strokeWidth="2.25"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="lucide lucide-circle-user-icon lucide-circle-user"
             >
               <circle cx="12" cy="12" r="10" />
               <circle cx="12" cy="10" r="3" />
@@ -53,10 +49,10 @@ const playerCard = ({playerInfo}) => {
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="#787878"
-                stroke-width="2.25"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="lucide lucide-flag-icon lucide-flag"
+                strokeWidth="2.25"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="lucide lucide-flag-icon lucide-flag"
               >
                 <path d="M4 22V4a1 1 0 0 1 .4-.8A6 6 0 0 1 8 2c3 0 5 2 7.333 2q2 0 3.067-.8A1 1 0 0 1 20 4v10a1 1 0 0 1-.4.8A6 6 0 0 1 16 16c-3 0-5-2-8-2a6 6 0 0 0-4 1.528" />
               </svg>
@@ -65,9 +61,11 @@ const playerCard = ({playerInfo}) => {
             <p className="text-[#131313]/70">{playerInfo.nationality}</p>
           </div>
 
-          <p className="text-[14px]">
-            {playerInfo.is_all_rounder ? "All-Rounder" : ""}
-          </p>
+          <div className="divider"></div>
+
+          <button className="btn btn-disabled text-black text-[14px]">
+            {playerInfo.is_all_rounder ? "All-Rounder" : "Not All-Rounder"}
+          </button>
         </div>
 
         <div className="flex justify-between items-center mb-4">
@@ -85,8 +83,24 @@ const playerCard = ({playerInfo}) => {
         <div className="flex justify-between items-center">
           <p className="font-bold">Price: $ {playerInfo.price}</p>
 
-          <button className="btn btn-outline btn-primary btn-sm">
-            Select Player
+          <button
+            onClick={() => {
+              if (balance - playerInfo.price < 0) {
+                return alert("Unpossible transaction");
+              } else {
+                setSelect(true);
+                alert(`${playerInfo.name} ijh selected`);
+                setBalance(balance - playerInfo.price);
+                setSelectedPlayers([...selectedPlayers, playerInfo]);
+
+
+
+
+              }
+            }}
+            className={`${select ? "btn-disabled" : ""}  btn btn-outline btn-primary btn-sm`}
+          >
+            {select ? "Player Selected" : "Select Player"}
           </button>
         </div>
       </div>
@@ -94,4 +108,4 @@ const playerCard = ({playerInfo}) => {
   );
 };
 
-export default playerCard;
+export default PlayerCard;

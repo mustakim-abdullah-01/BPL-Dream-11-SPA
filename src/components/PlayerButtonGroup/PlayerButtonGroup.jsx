@@ -1,13 +1,18 @@
-import { Fragment, useState } from "react";
+import { Fragment, Suspense, useState } from "react";
+import PlayerCards from "../PlayerCards/PlayerCards";
+import SelectedPlayers from "../PlayerCards/SelectedPlayers";
 
-const PlayerButtonGroup = () => {
+const PlayerButtonGroup = ({ balance, setBalance }) => {
+  const [active, setActive] = useState(true);
 
+  const [selectedPlayers, setSelectedPlayers] = useState([]);
 
-  const [active, setActive] = useState(true)
+  const fetchPlayers = async () => {
+    const response = await fetch("/playersData.json");
+    return response.json();
+  };
 
-
-
-
+  const playersPromise = fetchPlayers();
 
   return (
     <Fragment>
@@ -23,30 +28,72 @@ const PlayerButtonGroup = () => {
               text-[28px] text-[#131313] font-bold
             "
           >
-            Available Players
+            {active
+              ? "Available Players"
+              : `Selected Player (${selectedPlayers.length} / 5)`}
           </h3>
         </div>
 
         <div
-          className="
-            flex gap-px
+          className=" border border-black/50 p-1 rounded-xl
+            flex join
           "
         >
           <button
-            className={`border-[#E7fE29]/80 px-8 py-3.5 font-bold text-[16px] rounded-l-xl hover:cursor-pointer  ${active ? "bg-[#E7FE29] shadow-2xl" : "bg-none shadow-none"}`}
-            onClick={() => setActive(true)}
+            className={`px-8 py-3.5 font-bold join-item text-[16px] rounded-l-xl btn btn-lg  ${active ? "bg-[#E7FE29]" : "bg-none"}`}
+            onClick={() => {
+              setActive(true);
+              {
+                <PlayerCards state={active} />;
+              }
+            }}
           >
             Available
           </button>
 
           <button
-            className={`border-[#E7fE29]/80 shadow-md px-8 py-3.5 font-bold text-[16px] rounded-r-xl hover:cursor-pointer ${active ? "bg-none shadow none" : "bg-[#E7fE29] shadow-2xl"} `}
+            className={`px-8 join-item py-3.5 font-bold text-[16px] rounded-r-xl btn btn-lg ${active ? "bg-none" : "bg-[#E7fE29]"} `}
             onClick={() => setActive(false)}
           >
-            Selected (<span>0</span>)
+            Selected ({selectedPlayers.length})
           </button>
         </div>
       </div>
+
+      {active ? (
+        <Suspense
+          fallback={
+            <div className="py-96 flex justify-center items-center">
+              <span className="loading loading-bars loading-xl"></span>
+            </div>
+          }
+        >
+          <div>
+            <PlayerCards
+              balance={balance}
+              setBalance={setBalance}
+              playersPromise={playersPromise}
+              selectedPlayers={selectedPlayers}
+              setSelectedPlayers={setSelectedPlayers}
+            />
+          </div>
+        </Suspense>
+      ) : (
+        <Suspense
+          fallback={
+            <div className="py-96 flex justify-center items-center">
+              <span className="loading loading-bars loading-xl"></span>
+            </div>
+          }
+        >
+          <div className="mb-72">
+            <SelectedPlayers
+              setSelectedPlayers={setSelectedPlayers}
+              selectedPlayers={selectedPlayers}
+            />
+          </div>
+        </Suspense>
+      )}
     </Fragment>
   );
 };

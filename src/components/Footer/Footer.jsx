@@ -88,7 +88,7 @@ const Footer = () => {
                       />
                     </label>
                   </div>
-                  <button className="btn text-black md:w-22 btn-neutral join-item bg-linear-to-r from-pink-300 to-amber-300">
+                  <button className="z-30 btn border-none text-black md:w-22 btn-neutral join-item bg-linear-to-r from-pink-300 to-amber-300">
                     Join
                   </button>
                 </div>

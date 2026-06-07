@@ -5,7 +5,7 @@
     "batting_style": "Left-handed",
     "bowling_style": "Right-arm fast-medium",
     "rating": 89,
-    "price": 14500000,
+    "price": 145000,
     "image": "https://i.ibb.co.com/gMWcbzQ3/ben-stokes-england.jpg",
     "is_all_rounder": true
   },
@@ -15,7 +15,7 @@
     "batting_style": "Right-handed",
     "bowling_style": "Right-arm medium",
     "rating": 92,
-    "price": 16000000,
+    "price": 160000,
     "image": "https://i.ibb.co.com/DfPXbqRN/virat-kohli-india.jpg",
     "is_all_rounder": false
   },
@@ -25,7 +25,7 @@
     "batting_style": "Right-handed",
     "bowling_style": "Right-arm leg-break",
     "rating": 88,
-    "price": 13000000,
+    "price": 130000,
     "image": "https://i.ibb.co.com/VWssXZLR/rashid-khan-afghanistan.jpg",
     "is_all_rounder": true
   },
@@ -35,7 +35,7 @@
     "batting_style": "Right-handed",
     "bowling_style": "Right-arm fast",
     "rating": 94,
-    "price": 15000000,
+    "price": 150000,
     "image": "https://i.ibb.co.com/vxzrh793/jasprit-bujmrah-india.jpg",
     "is_all_rounder": false
   },
@@ -45,7 +45,7 @@
     "batting_style": "Right-handed",
     "bowling_style": "Right-arm off-break",
     "rating": 86,
-    "price": 11000000,
+    "price": 110000,
     "image": "https://i.ibb.co.com/ccyG6Vx8/glenn-maxwell-australia.jpg",
     "is_all_rounder": true
   }

@@ -1,17 +1,20 @@
-import { Fragment} from "react";
+import { Fragment, useState} from "react";
 import dollar_1 from "../../assets/dollar_1.png"
 import logo from "../../assets/logo.png"
+import {Menu} from "lucide-react";
 
 
-const NavBar = () => {
+const NavBar = ({balance}) => {
+
+  const [show, setShow] = useState(false);
+
 
   return (
     <Fragment>
-      
       {/* large parent-div*/}
       <div
         className="
-          flex justify-between
+          flex justify-around md:justify-between
           mb-6
           bg-base-100
           shadow-sm
@@ -35,9 +38,9 @@ const NavBar = () => {
             gap-12
           "
         >
-          {/* links-div */}
+          {/*big navbar links-div */}
 
-          <div>
+          <div className="max-md:hidden">
             <ul
               className="
                 flex
@@ -65,7 +68,7 @@ const NavBar = () => {
             className="
               flex justify-center items-center
               rounded-xl
-              btn btn-lg btn-soft btn-disabled gap-4
+              btn btn-soft btn-disabled gap-4
             "
           >
             <span
@@ -73,18 +76,37 @@ const NavBar = () => {
                 text-black
               "
             >
-              <span>0 </span>
+              <span>{balance}</span>
               Coins
             </span>
             <img src={dollar_1} alt="" />
+          </div>
 
-            {/* <svg
-              xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffea00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-              class="
-                lucide lucide-circle-dollar-sign-icon lucide-circle-dollar-sign
-              "
-            ><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 18V6"/>
-            </svg> */}
+          {/*small navbar links-div */}
+
+          <div className="md:hidden relative">
+            <Menu
+              onClick={() => {
+                setShow(!show);
+              }}
+            />
+
+            <ul
+              className={`absolute z-40 max-sm:-right-13.5 flex flex-col  duration-500 ${show ? "top-19.5" : "-top-80"} text-bl gap-12 bg-base-300 p-5 rounded-bl-3xl`}
+            >
+              <li>
+                <a href="">Home</a>
+              </li>
+              <li>
+                <a href="">Fixture</a>
+              </li>
+              <li>
+                <a href="">Teams</a>
+              </li>
+              <li>
+                <a href="">Schedules</a>
+              </li>
+            </ul>
           </div>
         </div>
       </div>

@@ -17,7 +17,7 @@ const Hero = () => {
           <img
             className="
               absolute bottom-0 left-0
-              rounded-3xl
+              rounded-3xl w-137.5 pr-10 max-lg:hidden
             "
             src={bannerShadowbottom}
             alt=""
@@ -26,19 +26,15 @@ const Hero = () => {
 
         <div>
           <img
-            className="
+            className=" 
               absolute top-0 right-0
-              rounded-3xl
+              rounded-3xl w-137.5 max-lg:hidden
             "
             src={bannerShadowtop}
             alt=""
           ></img>
         </div>
-        <div
-          className="
-
-          "
-        >
+        <div>
           <img src={bannerImage} alt="" />
         </div>
 
@@ -73,21 +69,17 @@ const Hero = () => {
             hover:cursor-pointer
           "
         >
-          
-            <button
-              className="
+          <button
+            className=" z-100 btn border-none btn-lg
                 px-5 py-3.5
                 font-bold text-4 text-[#131313]
                 bg-[#E7FE29]
                 rounded-2xl
                 hover:cursor-pointer
-              "
-            >
-              Claim Free Credit
-            </button>
-
+              ">
+            Claim Free Credit
+          </button>
         </div>
-        
       </div>
     </Fragment>
   );

@@ -1,30 +1,18 @@
-import { Suspense } from "react";
 import "./App.css";
 import Hero from "./components/Hero/Hero";
 import NavBar from "./components/NavBar/NavBar";
-import PlayerButtonGroup from "./components/PlayerButtonGroup/PlayerButtonGroup";
-import PlayerCards from "./components/PlayerCards/PlayerCards";
 import Footer from "./components/Footer/Footer";
-import NavMenu from "./components/NavBar/NavMenu";
-
-const fetchPlayers = async () => {
-  const response = await fetch("/playersData.json");
-  return response.json();
-};
-
-const playersPromise = fetchPlayers();
+import PlayerButtonGroup from "./components/PlayerButtonGroup/PlayerButtonGroup";
+import { useState } from "react";
 
 function App() {
-  return (
-    <div className="sora-font  mx-auto">
-      {/* NavBar */}
-      <div className="max-md:hidden">
-        <NavBar />
-      </div>
+  const [balance, setBalance] = useState(695000);
 
-      {/* NavMenu */}
-      <div className="md:hidden">
-        <NavMenu />
+  return (
+    <div className="mx-auto">
+      {/* NavBar */}
+      <div className="">
+        <NavBar balance={balance} />
       </div>
 
       {/* Banner */}
@@ -34,21 +22,9 @@ function App() {
 
       {/* PlayerButtons */}
       <div className="px-4">
-      <PlayerButtonGroup />
+        <PlayerButtonGroup balance={balance} setBalance={setBalance} />
       </div>
 
-      {/* PlayerCards */}
-      <div className="px-4">
-        <Suspense
-          fallback={
-            <div className="flex justify-center items-center">
-              <span className="loading loading-bars loading-xl"></span>
-            </div>
-          }
-        >
-          <PlayerCards playersPromise={playersPromise} />
-        </Suspense>
-      </div>
       {/* Footer */}
       <Footer />
     </div>

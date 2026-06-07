@@ -43,9 +43,8 @@ const NewsLetter = () => {
                   />
                 </label>
               </div>
-              <button
-                className="
-              btn w-36 text-black bg-linear-to-r from-pink-500 to-amber-500"
+              
+              <button className="z-10 btn btn-wide w-36 hover:cursor-pointer text-black bg-linear-to-r from-pink-500 to-amber-500 "
               >
                 Subscribe
               </button>
